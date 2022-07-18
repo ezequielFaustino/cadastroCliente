@@ -2,6 +2,9 @@
 const btnEnviar = document.querySelector("#btn-enviar");
 //pegar todos os campos
 const inputsForm = document.querySelectorAll("input.contato-form");
+// text cpf valido ou invalido; label cpf
+const labelCpf = document.querySelector("#label-cpf");
+const paragrafo = document.querySelector("#texto-cpf");
 
 // funcao mudar cor do botao
 const changeColorOfButton = () =>{
@@ -73,19 +76,19 @@ function validaPrimeiroDigito(cpf){
   
   //retorna falso se cpf invalido, verdadeiro se cpf válido
   function validarCpf(cpf){
-    // text cpf valido ou invalido
-    const paragrafo = document.querySelector("#texto-cpf");
-   
     if(!validaPrimeiroDigito(cpf)){
+      labelCpf.style.color = "red";
       paragrafo.style.color = "red";  
       paragrafo.innerText = "cpf inválido"
       return false;
     }
     if(!validaSegundoDigito(cpf)){
+      labelCpf.style.color = "red";
       paragrafo.style.color = "red"; 
       paragrafo.innerText = "cpf inválido"
       return false;
     }
+    labelCpf.style.color = "green";
     paragrafo.style.color = "green"; 
     paragrafo.innerText = "cpf válido"
     return true;
