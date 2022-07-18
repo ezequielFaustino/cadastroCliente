@@ -39,6 +39,10 @@ fieldset{
     padding: 0;
     width: 100%;
 }
+fieldset > #texto-cpf{
+    font-size: 0.8em;
+}
+
 
 #contato input[type="text"]{
     width: 100%;

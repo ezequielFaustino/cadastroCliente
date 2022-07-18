@@ -46,5 +46,64 @@ inputsForm[2].addEventListener("keypress", () =>{
   //console.log(inputLength);
 })
 
-
+//calculo para validacao do Cpf
+function validaPrimeiroDigito(cpf){
+    let sum = 0;
+    for (let i = 0; i < 9; i++) {
+      sum += cpf[i] * (10 - i);
+    }
+    const resto = (sum * 10) % 11;
+    if (resto < 10) {
+      return cpf[9] == resto;
+    }
+    return cpf[9] == 0;
+  }
+  
+  function validaSegundoDigito(cpf){
+    let soma = 0;
+    for(let i = 0; i < 10; i++){
+      soma += cpf[i] * (11 - i);
+    }
+    const resto = (soma * 10) % 11;
+    if(resto < 10){
+      return cpf[10] == resto;
+    }
+    return cpf[10] == 0;
+  }
+  
+  //retorna falso se cpf invalido, verdadeiro se cpf válido
+  function validarCpf(cpf){
+    // text cpf valido ou invalido
+    const paragrafo = document.querySelector("#texto-cpf");
+   
+    if(!validaPrimeiroDigito(cpf)){
+      paragrafo.style.color = "red";  
+      paragrafo.innerText = "cpf inválido"
+      return false;
+    }
+    if(!validaSegundoDigito(cpf)){
+      paragrafo.style.color = "red"; 
+      paragrafo.innerText = "cpf inválido"
+      return false;
+    }
+    paragrafo.style.color = "green"; 
+    paragrafo.innerText = "cpf válido"
+    return true;
+  }
+  
+  function infoCpf(){
+    //pegar value do campo cpf
+    const cpf = inputsForm[0].value;
+    //tirar '.' e '-'
+    const cpfSoNumero = cpf.toString().replace('.', '').replace('.', '').replace('-', '');
+    /*
+    console.log(cpfSoNumero);
+    console.log(typeof(cpfSoNumero));
+    console.log(cpfSoNumero.length);
+    */
+    cpfSoNumero.split('').map((e) => parseInt(e));
+    const cpfValido = validarCpf(cpfSoNumero);
+    console.log(cpfValido);
+  }
 //chamar funcao ao clicar em botao enviar
+btnEnviar.addEventListener("pointerdown", infoCpf);
