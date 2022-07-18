@@ -73,15 +73,21 @@ function validaPrimeiroDigito(cpf){
   
   //retorna falso se cpf invalido, verdadeiro se cpf válido
   function validarCpf(cpf){
+    // text cpf valido ou invalido
+    const paragrafo = document.querySelector("#texto-cpf");
+   
     if(!validaPrimeiroDigito(cpf)){
-      alert('Cpf inválido!!');
+      paragrafo.style.color = "red";  
+      paragrafo.innerText = "cpf inválido"
       return false;
     }
     if(!validaSegundoDigito(cpf)){
-      alert('Cpf inválido!!');
+      paragrafo.style.color = "red"; 
+      paragrafo.innerText = "cpf inválido"
       return false;
     }
-    alert('Cpf válido!!');
+    paragrafo.style.color = "green"; 
+    paragrafo.innerText = "cpf válido"
     return true;
   }
   
