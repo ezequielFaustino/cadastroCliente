@@ -77,18 +77,18 @@ function validaPrimeiroDigito(cpf){
   //retorna falso se cpf invalido, verdadeiro se cpf válido
   function validarCpf(cpf){
     if(!validaPrimeiroDigito(cpf)){
-      labelCpf.style.color = "red";
-      paragrafo.style.color = "red";  
+      labelCpf.style.color = "#EC615B";
+      paragrafo.style.color = "#EC615B";
       paragrafo.innerText = "cpf inválido"
       return false;
     }
     if(!validaSegundoDigito(cpf)){
-      labelCpf.style.color = "red";
-      paragrafo.style.color = "red"; 
+      labelCpf.style.color = "#EC615B";
+      paragrafo.style.color = "#EC615B";
       paragrafo.innerText = "cpf inválido"
       return false;
     }
-    labelCpf.style.color = "green";
+    labelCpf.style.color = "#1B1E24"; 
     paragrafo.style.color = "green"; 
     paragrafo.innerText = "cpf válido"
     return true;
